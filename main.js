@@ -29,13 +29,13 @@ fetch(
         let movieCard = document.createElement("div");
         movieCard.id = `${id}`;
         movieCard.className = "item";
-        movieCard.style.width = "300px";
         movieCard.addEventListener("click", () => {
           alert(`영화 id: ${id}`);
         });
 
         let movieImg = document.createElement("img");
-        movieImg.src = `https://image.tmdb.org/t/p/w300/${img}`;
+        movieImg.src = `https://image.tmdb.org/t/p/original/${img}`;
+        movieImg.style.width = "100%";
 
         let movieTitle = document.createElement("h3");
         movieTitle.innerHTML = `${title}`;
@@ -61,6 +61,9 @@ fetch(
     searchBtn.innerText = "검색";
 
     let searchMovies = () => {
+      while ($container.firstChild) {
+        $container.removeChild($container.firstChild);
+      }
       let search = document.querySelector("#search-title").value.toLowerCase();
       let filtered = movies.filter((v) =>
         v.original_title.toLowerCase().includes(search)
@@ -75,13 +78,13 @@ fetch(
         let movieCard = document.createElement("div");
         movieCard.id = `${id}`;
         movieCard.className = "item";
-        movieCard.style.width = "300px";
         movieCard.addEventListener("click", () => {
           alert(`영화 id: ${id}`);
         });
 
         let movieImg = document.createElement("img");
-        movieImg.src = `https://image.tmdb.org/t/p/w300/${img}`;
+        movieImg.src = `https://image.tmdb.org/t/p/original/${img}`;
+        movieImg.style.width = "100%";
 
         let movieTitle = document.createElement("h3");
         movieTitle.innerHTML = `${title}`;
@@ -101,10 +104,19 @@ fetch(
     };
 
     searchBtn.addEventListener("click", () => {
-      while ($container.firstChild) {
-        $container.removeChild($container.firstChild);
-      }
       searchMovies();
+    });
+
+    //input창에서 enter키로 검색하기
+    let inputBox = document.querySelector("#search-title");
+    inputBox.addEventListener("keyup", (e) => {
+      if (e.keyCode === 13) {
+        searchMovies();
+      }
     });
   })
   .catch((err) => console.error(err));
+//input에 포커싱하기
+window.addEventListener("load", () => {
+  document.querySelector("#search-title").focus();
+});
