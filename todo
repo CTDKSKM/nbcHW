@@ -33,7 +33,7 @@ DOM 제어하기:
 - `element.classList.remove(class)` : 해당 요소의 클래스 중에서 특정 클래스를 제거합니다.
 - `element.classList.toggle(class)` : 해당 요소의 클래스 중에서 특정 클래스를 추가 또는 제거합니다.
 1. 이벤트 처리
-- `element.addEventListener(type, listener)` : 해당 요소에서 이벤트가 발생했을 때 호출할 함수를 등록합니다.
+- `element.addEventListener(type, listener)` : 해당 요소에서 이벤트가 발함생했을 때 호출할 수를 등록합니다.
 - `element.removeEventListener(type, listener)` : 해당 요소에서 등록된 함수를 제거합니다.
 - `event.preventDefault()` : 이벤트가 발생했을 때 기본 동작을 취소합니다.
 - `event.stopPropagation()` : 이벤트의 버블링을 방지하기 위해 이벤트 전파를 중지합니다.
