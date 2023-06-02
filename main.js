@@ -13,18 +13,20 @@ fetch(
 )
   .then((response) => response.json())
   .then((response) => {
-    //show movies
     const movies = response.results;
     let $container = document.createElement("div");
     $container.id = "container";
     document.querySelector("#wrap").appendChild($container);
-    let showMovies = () => {
-      movies.forEach((movie) => {
-        let title = movie.original_title;
-        let overview = movie.overview;
-        let id = movie.id;
-        let img = movie.poster_path;
-        let rating = movie.vote_average;
+    //show movies
+    let showMovies = (data) => {
+      data.forEach((movie) => {
+        let {
+          original_title: title,
+          overview,
+          id,
+          poster_path: img,
+          vote_average: rating,
+        } = movie;
 
         let movieCard = document.createElement("div");
         movieCard.id = `${id}`;
@@ -53,65 +55,42 @@ fetch(
         movieCard.appendChild(movieRating);
       });
     };
-    showMovies();
+    showMovies(movies);
 
     //search movies
     let searchBtn = document.createElement("button");
     document.querySelector("#search-box").appendChild(searchBtn);
     searchBtn.innerText = "검색";
+    let beforeSearch = "";
 
-    let searchMovies = () => {
-      while ($container.firstChild) {
-        $container.removeChild($container.firstChild);
-      }
-      let search = document.querySelector("#search-title").value.toLowerCase();
+    let searchMovies = (value) => {
+      $container.innerHTML = ``;
       let filtered = movies.filter((v) =>
-        v.original_title.toLowerCase().includes(search)
+        v.original_title.toLowerCase().includes(value)
       );
-      filtered.forEach((fMovie) => {
-        let title = fMovie.original_title;
-        let overview = fMovie.overview;
-        let id = fMovie.id;
-        let img = fMovie.poster_path;
-        let rating = fMovie.vote_average;
-
-        let movieCard = document.createElement("div");
-        movieCard.id = `${id}`;
-        movieCard.className = "item";
-        movieCard.addEventListener("click", () => {
-          alert(`영화 id: ${id}`);
-        });
-
-        let movieImg = document.createElement("img");
-        movieImg.src = `https://image.tmdb.org/t/p/original/${img}`;
-        movieImg.style.width = "100%";
-
-        let movieTitle = document.createElement("h3");
-        movieTitle.innerHTML = `${title}`;
-
-        let movieOverview = document.createElement("p");
-        movieOverview.innerHTML = `${overview}`;
-
-        let movieRating = document.createElement("p");
-        movieRating.innerHTML = `Rating: ${rating}`;
-
-        $container.appendChild(movieCard);
-        movieCard.appendChild(movieImg);
-        movieCard.appendChild(movieTitle);
-        movieCard.appendChild(movieOverview);
-        movieCard.appendChild(movieRating);
-      });
+      showMovies(filtered);
+      beforeSearch = value;
     };
 
     searchBtn.addEventListener("click", () => {
-      searchMovies();
+      let search = document
+        .querySelector("#search-title")
+        .value.trim()
+        .toLowerCase();
+      if (search == beforeSearch) return; // 무한 검색 방지
+      searchMovies(search);
     });
 
     //input창에서 enter키로 검색하기
     let inputBox = document.querySelector("#search-title");
     inputBox.addEventListener("keyup", (e) => {
       if (e.keyCode === 13) {
-        searchMovies();
+        let search = document
+          .querySelector("#search-title")
+          .value.trim()
+          .toLowerCase();
+        if (search == beforeSearch) return;
+        searchMovies(search);
       }
     });
   })
