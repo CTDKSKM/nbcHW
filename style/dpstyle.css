@@ -1,0 +1,64 @@
+body {
+  /* 스크롤바 없애기 */
+  overflow: hidden;
+  display: grid;
+  width: 1903px;
+  height: 937px;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 10% 40% 50%;
+}
+header {
+  position: relative;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+#UX-Box {
+  display: flex;
+}
+.toHome {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  position: relative;
+  margin: auto;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.movie-list-box {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin-left: 90%;
+  margin-top: 3%;
+}
+.movie-list {
+  position: relative;
+  width: 25px;
+  height: 2px;
+  background-color: black;
+  margin: 3px 0;
+}
+
+#movie-info {
+  position: relative;
+  display: flex;
+  list-style: none;
+  /* li 마커 없애기 */
+}
+#details-container {
+  position: relative;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+#comment-container {
+  position: relative;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+.cmt-info-list {
+  list-style: none;
+  border-top: 1px solid black;
+}

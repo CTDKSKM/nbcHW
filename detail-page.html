@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/dpstyle.css" />
+    <script defer src="./src/detail-page.js"></script>
+    <script defer src="./src/comments.js"></script>
+    <title>상세페이지</title>
+</head>
+
+<body>
+    <header id="UX-Box">
+        <div class="toHome">홈버튼</div>
+        <div class="movie-list-box">
+            <div class="movie-list"></div>
+            <div class="movie-list"></div>
+            <div class="movie-list"></div>
+        </div>
+    </header>
+    <div id="details-container">
+        <ul id="movie-info">
+            <li id="movie-img"></li>
+            <li id="movie-details"></li>
+        </ul>
+    </div>
+    <div id="comment-container">
+        <form action="">
+            <input type="text" placeholder="작성자">
+            <input type="password" placeholder="비밀번호 4자리 숫자 입력">
+            <div>
+                <textarea name="" id="comment" cols="80" rows="6"></textarea>
+                <button id="comment-btn">작성</button>
+            </div>
+            <div id="comment-list-box">
+                <ul id="comment-list">
+
+                </ul>
+            </div>
+        </form>
+    </div>
+
+
+</body>
+
+</html>

@@ -21,7 +21,7 @@ fetch(
     let showMovies = (data) => {
       data.forEach((movie) => {
         let {
-          original_title: title,
+          title,
           overview,
           id,
           poster_path: img,
@@ -32,7 +32,9 @@ fetch(
         movieCard.id = `${id}`;
         movieCard.className = "item";
         movieCard.addEventListener("click", () => {
-          alert(`영화 id: ${id}`);
+          // alert(`영화 id: ${id}`);
+          location.href = "detail-page.html?id=" + id; // 영화카드 누를시 영화 아이디값을 url에 붙여서 상세페이지로 이동
+          window.localStorage.setItem(id, JSON.stringify(movie)); // 로컬스토리지에 영화 데이터 저장
         });
 
         let movieImg = document.createElement("img");
