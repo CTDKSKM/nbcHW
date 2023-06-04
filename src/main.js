@@ -69,7 +69,7 @@ fetch(
     let searchMovies = (value) => {
       $container.innerHTML = ``;
       let filtered = movies.filter((v) =>
-        v.original_title.toLowerCase().includes(value)
+        v.title.toLowerCase().includes(value)
       );
       showMovies(filtered);
       beforeSearch = value;
