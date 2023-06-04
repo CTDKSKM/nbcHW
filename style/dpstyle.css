@@ -62,3 +62,6 @@ header {
   list-style: none;
   border-top: 1px solid black;
 }
+textarea {
+  resize: none;
+}

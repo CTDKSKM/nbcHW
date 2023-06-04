@@ -1,5 +1,8 @@
 const searchId = new URLSearchParams(location.search);
-
+//홈버튼
+document.querySelector(".toHome").addEventListener("click", () => {
+  location.href = "index.html";
+});
 for (const id of searchId) {
   console.log(id);
   const Details = JSON.parse(window.localStorage.getItem(id[1]));

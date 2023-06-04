@@ -14,6 +14,7 @@ fetch(
   .then((response) => response.json())
   .then((response) => {
     const movies = response.results;
+    window.localStorage.setItem("allData", JSON.stringify(movies));
     let $container = document.createElement("div");
     $container.id = "container";
     document.querySelector("#wrap").appendChild($container);
